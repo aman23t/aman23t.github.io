@@ -60,22 +60,86 @@
         justify-content: flex-start;
       }
     }
+
+    .ribbon {
+      background-color: #FFFC5F;
+      color: #1a1a1a;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 0.6em;
+      line-height: 1.5;
+    }
+
+    .ribbon a {
+      color: #1a1a1a;
+      text-decoration: underline;
+    }
+
+    nav {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 16px 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 0.55em;
+      margin: 0 20px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .section h2 {
+      font-size: 1.4em;
+      margin: 0 0 0.5em 0;
+    }
   </style>
 </head>
 <body>
+  <div class="ribbon">
+    Welcome !
+  </div>
+  <nav>
+    <a href="gallery.html">Gallery</a>
+    <a href="#stories">Stories</a>
+    <a href="#contact">Contact</a>
+  </nav>
   <div class="container">
     <div class="text">
-      <h1>Aman Trehan</h1>
+      <h1></h1>
       <p>Hi, I'm Aman Trehan. For the last fifteen years, I've worked at the intersection of engineering, urban policy, and real estate &mdash; different fields on paper, but each one has really been the same question asked in a different setting: how do you use good data and good design to make people's daily lives a little safer and a little easier. I trained as an engineer, then studied city planning at Rutgers, and that combination has stayed with me &mdash; equally at home writing a Python script and sitting across the table from a transport ministry official.</p>
 
       <p>Much of that thread runs through road safety and public transport. In Nagpur, I helped manage a project that used driver-assistance technology on buses, working closely with government partners under India's Smart Cities Mission &mdash; accidents came down meaningfully over the course of it, and it remains work I'm quietly proud of. Before that, I worked on a similar effort piloting driver-assistance technology on intercity buses in Karnataka, and on the case for moving Bengaluru's public buses toward electric. More recently, I've turned that same instinct for evidence toward real estate, helping think through how a company should enter the NCR market. Alongside all this, I've stayed close to research too &mdash; on gender and mobility, and on disaster resilience in Himalayan communities.</p>
 
-      <p>I'm sharing this mostly because I enjoy hearing how other people think about these problems, and I'd love to learn more about what you're working on. If there's ever a reason for our paths to cross &mdash; whether that's a project, an introduction, or just a conversation &mdash; I'd genuinely welcome it. 🪷 </p>
+      <p>I'm sharing this mostly because I enjoy hearing how other people think about these problems, and I'd love to learn more about what you're working on. If there's ever a reason for our paths to cross &mdash; whether that's a project, an introduction, or just a conversation &mdash; I'd genuinely welcome it. No agenda beyond that.</p>
     </div>
 
     <div class="photo">
       <img src="images/trehan_headshot_2017.jpg" alt="Aman Trehan">
     </div>
+  </div>
+
+  <div id="stories" class="section">
+    <h2>Stories</h2>
+    <p>A closer look at my work and projects will go here.</p>
+  </div>
+
+  <div id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: youremail@example.com</p>
   </div>
 </body>
 </html>
