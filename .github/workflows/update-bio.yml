@@ -1,0 +1,38 @@
+name: Update bio in index.html
+
+# Runs automatically whenever bio.md changes on the main branch.
+# It regenerates index.html and commits the result back to the repo,
+# so you never have to run build.py yourself.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bio.md"
+  workflow_dispatch: {}   # lets you also trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Regenerate index.html from bio.md
+        run: python3 build.py
+
+      - name: Commit updated index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "Auto-update index.html from bio.md"
+          git push
