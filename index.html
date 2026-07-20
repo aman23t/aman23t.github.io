@@ -50,6 +50,62 @@
       max-width: 300px;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .photo img:hover {
+      opacity: 0.9;
+    }
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-caption {
+      color: #ffffff;
+      font-size: 0.55em;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
     }
 
     @media (max-width: 700px) {
@@ -64,9 +120,9 @@
     .ribbon {
       background-color: #FFFC5F;
       color: #1a1a1a;
-      text-align: left;
+      text-align: center;
       padding: 12px 20px;
-      font-size: 1.0em;
+      font-size: 0.6em;
       line-height: 1.5;
     }
 
@@ -110,38 +166,55 @@
 </head>
 <body>
   <div class="ribbon">
-    Aman Trehan
+    Welcome !
   </div>
   <nav>
     <a href="gallery.html">Gallery</a>
-    <a href="#stories">Stories</a>
     <a href="#contact">Contact</a>
+    <a href="#stories">Stories</a>
   </nav>
   <div class="container">
     <div class="text">
-      <h1></h1>
-      <p>Hi, I'm Aman. For the last fifteen years, I've worked at the intersection of engineering, urban policy, and real estate &mdash; different fields on paper, but each one has really been the same question asked in a different setting: how do you use good data and good design to make people's daily lives a little safer and a little easier. I trained as an engineer, then studied city planning at Rutgers, and that combination has stayed with me &mdash; equally at home writing a Python script and sitting across the table from a transport ministry official.</p>
+      <h1>Aman Trehan</h1>
+      <!-- BIO_START -->
+      <p>Hi, I'm Aman Trehan. For the last fifteen years, I've worked at the intersection of engineering, urban policy, and real estate — different fields on paper, but each one has really been the same question asked in a different setting: how do you use good data and good design to make people's daily lives a little safer and a little easier. I trained as an engineer, then studied city planning at Rutgers, and that combination has stayed with me — equally at home writing a Python script and sitting across the table from a transport ministry official.</p>
 
-      <p>Much of that thread runs through road safety and public transport. In Nagpur, I helped manage a project that used driver-assistance technology on buses, working closely with government partners under India's Smart Cities Mission &mdash; accidents came down meaningfully over the course of it, and it remains work I'm quietly proud of. Before that, I worked on a similar effort piloting driver-assistance technology on intercity buses in Karnataka, and on the case for moving Bengaluru's public buses toward electric. More recently, I've turned that same instinct for evidence toward real estate, helping think through how a company should enter the NCR market. Alongside all this, I've stayed close to research too &mdash; on gender and mobility, and on disaster resilience in Himalayan communities.</p>
+      <p>Much of that thread runs through road safety and public transport. In Nagpur, I helped manage a project that used driver-assistance technology on buses, working closely with government partners under India's Smart Cities Mission — accidents came down meaningfully over the course of it, and it remains work I'm quietly proud of. Before that, I worked on a similar effort piloting driver-assistance technology on intercity buses in Karnataka, and on the case for moving Bengaluru's public buses toward electric. More recently, I've turned that same instinct for evidence toward real estate, helping think through how a company should enter the NCR market. Alongside all this, I've stayed close to research too — on gender and mobility, and on disaster resilience in Himalayan communities.</p>
 
-      <p>I'm sharing this mostly because I enjoy hearing how other people think about these problems, and I'd love to learn more about what you're working on. If there's ever a reason for our paths to cross &mdash; whether that's a project, an introduction, or just a conversation &mdash; I'd genuinely welcome it. No agenda beyond that.</p>
+      <p>I'm sharing this mostly because I enjoy hearing how other people think about these problems, and I'd love to learn more about what you're working on. If there's ever a reason for our paths to cross — whether that's a project, an introduction, or just a conversation — I'd genuinely welcome it. No agenda beyond that.</p>
+      <!-- BIO_END -->
     </div>
 
     <div class="photo">
-      <img src="images/trehan_headshot_2017.jpg" alt="Aman Trehan">
+      <img src="images/trehan_headshot_2017.jpg" alt="Aman Trehan" onclick="openLightbox()">
     </div>
   </div>
 
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img src="images/trehan_headshot_2017.jpg" alt="Aman Trehan">
+      <p class="lightbox-caption">Aman Trehan &mdash; 2017</p>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox() {
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox(event) {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  </script>
+
   <div id="stories" class="section">
     <h2>Stories</h2>
-    <p>Soon.</p>
+    <p>A closer look at my work and projects will go here.</p>
   </div>
 
   <div id="contact" class="section">
     <h2>Contact</h2>
-    <div class="photo">
-      <img src="images/email.jpg">
-    </div>
+    <p>Email: youremail@example.com</p>
   </div>
 </body>
 </html>
