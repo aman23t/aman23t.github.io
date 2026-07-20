@@ -68,6 +68,62 @@
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
       display: block;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .thumbnail-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-caption {
+      color: #ffffff;
+      font-size: 0.6em;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: #ffffff;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
     }
   </style>
 </head>
@@ -86,12 +142,50 @@
     <h1>Gallery</h1>
 
     <div class="thumbnail-grid">
-      <!-- Add one <img> tag per photo. Just drop each file into the images folder
-           and add a line like the examples below, replacing the filename. -->
-      <img src="images/photo1.jpg" alt="Photo 1">
-      <img src="images/photo2.jpg" alt="Photo 2">
-      <img src="images/photo3.jpg" alt="Photo 3">
+      <!-- Add one <img> tag per photo. Just drop each file into the images folder,
+           set src to the filename, and set data-caption to whatever caption you want
+           to appear when that photo is clicked. -->
+      <img src="images/photo1.jpg" alt="Photo 1" data-caption="2014. At the New Brunswick station in my first week.">
+      <img src="images/photo2.jpg" alt="Photo 2" data-caption="2014. Tour of NJ Transit Rail yard, somewhere near Newark.">
+      <img src="images/photo3.jpg" alt="Photo 3" data-caption="2025. Outside Meridian ice cream shop on Fergusson College Road, Pune.">
     </div>
   </div>
+
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('lightboxOverlay');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.thumbnail-grid img').forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        lightboxImage.src = thumb.src;
+        lightboxImage.alt = thumb.alt;
+        lightboxCaption.textContent = thumb.getAttribute('data-caption') || '';
+        overlay.classList.add('open');
+      });
+    });
+
+    function closeLightbox() {
+      overlay.classList.remove('open');
+      lightboxImage.src = '';
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
