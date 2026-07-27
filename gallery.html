@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery</title>
+  <title>Gallery — Aman Trehan</title>
   <style>
     body {
       background-color: #ffffff;
@@ -13,14 +13,15 @@
       color: #1a1a1a;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     .ribbon {
       background-color: #FFFC5F;
       color: #1a1a1a;
-      text-align: left;
+      text-align: center;
       padding: 12px 20px;
-      font-size: 1.0em;
+      font-size: 0.6em;
       line-height: 1.5;
     }
 
@@ -55,81 +56,49 @@
       margin: 0 0 0.6em 0;
     }
 
-    .thumbnail-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
+    .photo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
-    .thumbnail-grid img {
+    .photo-item img {
       width: 100%;
-      height: 220px;
-      object-fit: cover;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
       display: block;
-      cursor: pointer;
-      transition: transform 0.15s ease;
     }
 
-    .thumbnail-grid img:hover {
-      transform: scale(1.03);
+    .photo-item .caption {
+      font-size: 0.55em;
+      color: #444;
+      margin-top: 10px;
     }
 
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      box-sizing: border-box;
-    }
+    @media (max-width: 700px) {
+      .section {
+        padding: 30px 20px;
+      }
 
-    .lightbox-overlay.open {
-      display: flex;
-    }
+      nav {
+        padding: 12px 10px;
+      }
 
-    .lightbox-content {
-      max-width: 900px;
-      width: 100%;
-      text-align: center;
-    }
+      nav a {
+        margin: 0 8px;
+        display: inline-block;
+      }
 
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 75vh;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-
-    .lightbox-caption {
-      color: #ffffff;
-      font-size: 0.6em;
-      margin-top: 16px;
-      line-height: 1.5;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 32px;
-      color: #ffffff;
-      font-size: 1.2em;
-      font-weight: bold;
-      cursor: pointer;
-      line-height: 1;
+      .photo-list {
+        gap: 28px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="ribbon">
-    Aman Trehan
+    Welcome !
   </div>
   <nav>
     <a href="index.html">Home</a>
@@ -141,51 +110,22 @@
   <div class="section">
     <h1>Gallery</h1>
 
-    <div class="thumbnail-grid">
-      <!-- Add one <img> tag per photo. Just drop each file into the images folder,
-           set src to the filename, and set data-caption to whatever caption you want
-           to appear when that photo is clicked. -->
-      <img src="images/photo1.jpg" alt="Photo 1" data-caption="2014. At the New Brunswick station in my first week.">
-      <img src="images/photo2.jpg" alt="Photo 2" data-caption="2014. Tour of NJ Transit Rail yard, somewhere near Newark.">
-      <img src="images/photo3.jpg" alt="Photo 3" data-caption="2025. Outside Meridian ice cream shop on Fergusson College Road, Pune.">
+    <div class="photo-list">
+      <!-- Add one .photo-item block per photo. Just drop each file into the
+           images folder, set src to the filename, and edit the caption text. -->
+      <div class="photo-item">
+        <img src="images/photo1.jpg" alt="Photo 1">
+        <div class="caption">A short caption for photo 1.</div>
+      </div>
+      <div class="photo-item">
+        <img src="images/photo2.jpg" alt="Photo 2">
+        <div class="caption">A short caption for photo 2.</div>
+      </div>
+      <div class="photo-item">
+        <img src="images/photo3.jpg" alt="Photo 3">
+        <div class="caption">A short caption for photo 3.</div>
+      </div>
     </div>
   </div>
-
-  <div class="lightbox-overlay" id="lightboxOverlay">
-    <span class="lightbox-close" id="lightboxClose">&times;</span>
-    <div class="lightbox-content">
-      <img id="lightboxImage" src="" alt="">
-      <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-  </div>
-
-  <script>
-    const overlay = document.getElementById('lightboxOverlay');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const closeBtn = document.getElementById('lightboxClose');
-
-    document.querySelectorAll('.thumbnail-grid img').forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        lightboxImage.src = thumb.src;
-        lightboxImage.alt = thumb.alt;
-        lightboxCaption.textContent = thumb.getAttribute('data-caption') || '';
-        overlay.classList.add('open');
-      });
-    });
-
-    function closeLightbox() {
-      overlay.classList.remove('open');
-      lightboxImage.src = '';
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) closeLightbox();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
 </body>
 </html>
