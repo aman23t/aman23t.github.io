@@ -4,30 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aman Trehan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #ffffff;
-      font-family: Calibri, "Segoe UI", Arial, sans-serif;
-      font-size: 18pt;
+      font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+      font-size: 16pt;
       line-height: 1.5;
       color: #1a1a1a;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 60px 40px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 40px;
+      position: relative;
     }
 
     .text {
-      flex: 1 1 550px;
-      min-width: 300px;
+      max-width: 700px;
     }
 
     .text h1 {
@@ -40,14 +38,14 @@
     }
 
     .photo {
-      flex: 0 0 300px;
-      display: flex;
-      justify-content: center;
+      position: absolute;
+      top: 60px;
+      right: 40px;
+      width: 220px;
     }
 
     .photo img {
       width: 100%;
-      max-width: 300px;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
       cursor: pointer;
@@ -110,10 +108,31 @@
 
     @media (max-width: 700px) {
       .container {
-        flex-direction: column-reverse;
+        padding: 30px 20px;
       }
+
       .photo {
-        justify-content: flex-start;
+        position: static;
+        width: 160px;
+        margin: 0 auto 24px auto;
+      }
+
+      .ribbon {
+        font-size: 1.3em;
+        padding: 14px 16px;
+      }
+
+      nav {
+        padding: 12px 10px;
+      }
+
+      nav a {
+        margin: 0 10px;
+        display: inline-block;
+      }
+
+      .section {
+        padding: 40px 20px;
       }
     }
 
@@ -121,9 +140,12 @@
       background-color: #FFFC5F;
       color: #1a1a1a;
       text-align: center;
-      padding: 12px 20px;
-      font-size: 0.6em;
-      line-height: 1.5;
+      padding: 18px 20px;
+      font-family: "Crimson Pro", Georgia, serif;
+      font-weight: 600;
+      font-size: 1.8em;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
     }
 
     .ribbon a {
@@ -141,7 +163,7 @@
     nav a {
       color: #1a1a1a;
       text-decoration: none;
-      font-size: 0.55em;
+      font-size: 0.825em;
       margin: 0 20px;
       font-weight: bold;
       letter-spacing: 0.5px;
@@ -166,7 +188,7 @@
 </head>
 <body>
   <div class="ribbon">
-    Welcome !
+    Aman Trehan
   </div>
   <nav>
     <a href="gallery.html">Gallery</a>
@@ -175,13 +197,10 @@
   </nav>
   <div class="container">
     <div class="text">
-      <h1>Aman Trehan</h1>
       <!-- BIO_START -->
-      <p>Hi, I'm Aman. For the last fifteen years, I've worked at the intersection of engineering, urban policy, and real estate — different fields on paper, but each one has really been the same question asked in a different setting: how do you use good data and good design to make people's daily lives a little safer and a little easier. I trained as an engineer, then studied city planning at Rutgers, and that combination has stayed with me — equally at home writing a Python script and sitting across the table from a transport ministry official.</p>
+      <p>Hi, I'm Aman. I live in New Delhi, and whenever I visit a new city or even a neighborhood, there's a good chance I'd spend some time thinking about the environment around me — its footpaths, its bus routes, the layout of the space, the metro lines slowly stitching new neighborhoods together. I also find myself noticing how a local community comes together — whether there's a park bench where elders gather in the evening, or a stretch of street where kids end up playing after school, or any real opportunity for different generations to do something together, rather than just living side by side. I've lived in Indian cities my whole life, save for about three years away in New Jersey for graduate studies at the <a href="https://bloustein.rutgers.edu/graduate/uppd/mcrp/">Bloustein School</a> and the work that followed it. Even from there, I found myself comparing everything back to home — what worked, what didn't, and why.</p>
 
-      <p>Much of that thread runs through road safety and public transport. In Nagpur, I helped manage a project that used driver-assistance technology on buses, working closely with government partners under India's Smart Cities Mission — accidents came down meaningfully over the course of it, and it remains work I'm quietly proud of. Before that, I worked on a similar effort piloting driver-assistance technology on intercity buses in Karnataka, and on the case for moving Bengaluru's public buses toward electric. More recently, I've turned that same instinct for evidence toward real estate, helping think through how a company should enter the NCR market. Alongside all this, I've stayed close to research too — on gender and mobility, and on disaster resilience in Himalayan communities.</p>
-
-      <p>I'm sharing this mostly because I enjoy hearing how other people think about these problems, and I'd love to learn more about what you're working on. If there's ever a reason for our paths to cross — whether that's a project, an introduction, or just a conversation — I'd genuinely welcome it.</p>
+      <p>I trained first as an engineer, writing software for banks and public institutions, before something shifted and I went back to study City and Regional Planning. I wanted to understand cities not just as systems to optimize, but as places where people connect with opportunity and get the chance to fulfill their potential. That question has stayed with me ever since: how do we use good data and thoughtful design to make our everyday surroundings kinder and safer, so people can happily move through their lives without the city constantly getting in the way.</p>
       <!-- BIO_END -->
     </div>
 
@@ -214,9 +233,7 @@
 
   <div id="contact" class="section">
     <h2>Contact</h2>
-    <div class="photo">
-      <img src="images/email.jpg">
-    </div>
+    <p><img src="images/email.jpg" alt="Email icon" style="width: 24px; height: 24px; vertical-align: middle; border-radius: 4px;"></p>
   </div>
 </body>
 </html>
