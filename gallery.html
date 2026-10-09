@@ -85,6 +85,26 @@
       margin-top: 10px;
     }
 
+    .video-item .caption p {
+      margin: 0 0 0.8em 0;
+    }
+
+    .video-frame {
+      max-width: 360px;
+      margin: 0 auto;
+      aspect-ratio: 9 / 16;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
     @media (max-width: 700px) {
       .section {
         padding: 30px 20px;
@@ -125,6 +145,16 @@
     <h1>Gallery</h1>
 
     <div class="photo-list">
+      <div class="photo-item video-item">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/758e9bwmDrQ"
+                  title="YouTube video" allowfullscreen></iframe>
+        </div>
+        <div class="caption">
+          <p>Dr. Manmohan Singh (1932-2024) rose from a village in undivided Punjab to become one of India’s most respected statesmen. As Finance Minister in 1991, he dismantled the Licence Raj and set India on the path of economic liberalisation. As Prime Minister from 2004 to 2014, his government enacted the Right to Information Act, MGNREGA and the Right to Education. India’s first Sikh Prime Minister, he was admired for his integrity, humility and quiet strength.</p>
+          <p>Hamare Baad Ab Mehfil Mein’ is a ghazal from the 1953 film Baaghi, written by Majrooh Sultanpuri and composed by Madan Mohan. It reflects on how a person is remembered once they are gone. Majrooh Sultanpuri (1919–2000) was among Hindi cinema’s most celebrated lyricists and the first film lyricist to receive the Dadasaheb Phalke Award.</p>
+        </div>
+      </div>
       <!-- Add one .photo-item block per photo. Just drop each file into the
            images folder, set src to the filename, and edit the caption text.
            Every .photo-item automatically renders at the same fixed width
